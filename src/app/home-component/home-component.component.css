@@ -54,5 +54,16 @@ li {
     margin: 19px;
     margin-top: 10px;
     border-radius: 10px;
+    position: relative;
+}
 
+
+.bi-heart{
+   position: absolute;
+   top: 4%;
+   right: 5%;
+   padding: 2%;
+   background-color: #fffcff;
+   border-style: solid;
+   border-radius: 10px;
 }
