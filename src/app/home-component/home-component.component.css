@@ -48,6 +48,7 @@ li {
     height: 183px;
     width: 146px;
     padding-bottom: 100px;
+    max-width: 146px;
     padding: 7vh;
     border-style: solid;
     border-color: black;
@@ -63,7 +64,27 @@ li {
    top: 4%;
    right: 5%;
    padding: 2%;
-   background-color: #fffcff;
-   border-style: solid;
+   background-color: rgb(255, 255, 255);
+   border-style: none;
    border-radius: 10px;
+}
+
+img{
+    height: 178px;
+    width: 140px;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.nome-alimento{
+    z-index: 2;
+    position:absolute;
+    color: white;
+    font-size: large;
+    
+    text-shadow: 1px 1px black ;
+    left: 6%;
+    bottom  : 5%;
 }

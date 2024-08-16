@@ -9,21 +9,30 @@
       </div>
     </header>
 
-      <input type="text" placeholder="Digite seus ingredientes" />
-      <div class="">
+    <input type="text" placeholder="Digite seus ingredientes" />
+    <div class="">
       <ul class="row">
         <li class="col">
-          <img [src]="img" alt="">
-       <i class="bi bi-heart"></i>
+          <img [src]="recipiesInfo['Lancashire'].strMealThumb" alt="" />
+          <i class="bi bi-heart"></i>
+          <p class="nome-alimento"> {{ recipiesInfo['Lancashire'].strMeal }}</p>
+        </li>
+      <li class="col">
+          <img [src]="recipiesInfo['Dumpling'].strMealThumb" alt="" />
+          <i class="bi bi-heart"></i>
+          <p class="nome-alimento"> {{  recipiesInfo['Dumpling'].strMeal }}</p>
+          </li>
+        <li class="col">
+          <img [src]="recipiesInfo['Pancakes'].strMealThumb" alt="" />
+          <i class="bi bi-heart"></i>
+          <p class="nome-alimento"> {{ recipiesInfo['Pancakes'].strMeal }}</p>
         </li>
         <li class="col">
-           <i class="bi bi-heart"></i></li>
-        <li class="col">   
-           <i class="bi bi-heart"></i></li>
-        <li class="col"> 
-             <i class="bi bi-heart"></i></li>
+          <img [src]="recipiesInfo['Brownies'].strMealThumb" alt="" />
+          <i class="bi bi-heart"></i>
+          <p class="nome-alimento"> {{ recipiesInfo['Brownies'].strMeal }}</p>
+        </li> 
       </ul>
     </div>
-
   </div>
 </div>
