@@ -1,0 +1,11 @@
+<div class="main">
+    <div class="container">
+        <header><h1>Categorias</h1></header>
+
+
+        <ul *ngFor="let categoria of categorias">
+            <li><p>{{ categoria.strCategory }}</p> <img [src]="categoria.strCategoryThumb" alt=""></li>
+            
+        </ul>
+    </div>
+</div>
