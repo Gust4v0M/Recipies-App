@@ -3,9 +3,11 @@
         <header><h1>Categorias</h1></header>
 
 
-        <ul *ngFor="let categoria of categorias">
-            <li><p>{{ categoria.strCategory }}</p> <img [src]="categoria.strCategoryThumb" alt=""></li>
-            
+        <ul *ngFor="let categoria of categorias.slice(3, 12)">
+            <li routerLink="/categories-details" (click)="categoriaEscolhida(categoria)"><p>{{ categoria.strCategory }}</p> <img [src]="categoria.strCategoryThumb" alt=""></li>
+                    <app-categories-details *ngIf="mostrarComponent" [info]="categoriaSelecionada"></app-categories-details>
         </ul>
+
     </div>
 </div>
+
