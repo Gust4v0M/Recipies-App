@@ -12,7 +12,7 @@ export const routes: Routes = [
         path:'categories', loadComponent:() => import('./categories/categories.component').then(c => c.CategoriesComponent)
     },
     {
-        path:'categories-details', loadComponent:()=> import('./categories/categories-details/categories-details.component').then(c => c.CategoriesDetailsComponent)
+        path:'categories-details/:categoria', loadComponent:()=> import('./categories/categories-details/categories-details.component').then(c => c.CategoriesDetailsComponent)
     },
     
 ];

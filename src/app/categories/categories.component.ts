@@ -23,9 +23,6 @@ export class CategoriesComponent implements OnInit{
   ngOnInit(): void {
     this.catService.getCategoriesMeals()
     .subscribe((res: any) => this.categorias = res.categories)
-  }
-  categoriaEscolhida(categoria: any): void {
-    this.categoriaSelecionada = categoria;
-    this.mostrarComponent = true;
+    
   }
 }

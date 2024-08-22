@@ -1,13 +1,16 @@
 <div class="main">
     <div class="container">
-        <header *ngIf="info"><h2>  {{ info.strCategory }} </h2></header>
-
+        <header *ngIf="NomeCategoria"><h2>  {{ nomeHeader }} </h2></header>
+<div>
         <ul>
-            <li>
-                <img src="" alt="">
+            <li *ngFor="let NomeCategorias of NomeCategoria">
+                <img [src]="NomeCategorias.strMealThumb" alt="">
+              <p class="nomeRefeição">{{ NomeCategorias.strMeal }}</p>
                 <i class="bi bi-heart"></i>
               <div class="food-info"><i class="bi bi-fire"></i> {{'350 Kcal'}} <i class="bi bi-clock"></i> {{'20 min'}}</div>
             </li>
         </ul>
+        
+    </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { InfoRecipiesService } from '../../home-component/info-recipies.service';
 
 @Component({
   selector: 'app-categories-details',
@@ -8,14 +10,37 @@ import { Component, Input, SimpleChanges } from '@angular/core';
   templateUrl: './categories-details.component.html',
   styleUrl: './categories-details.component.css'
 })
-export class CategoriesDetailsComponent {
+export class CategoriesDetailsComponent implements OnInit{
 
-  @Input() info: any;
+  NomeCategoria!: any;
+  nomeHeader!: any;
+ 
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['info'] && changes['info'].currentValue) {
-      console.log('Categoria selecionada:', this.info);
-    }
+  constructor(private route: ActivatedRoute,
+              private service: InfoRecipiesService
+  ){}
+
+  ngOnInit(): void {
+    this.route.params
+    .subscribe(params =>{
+      this.NomeCategoria = params['categoria']
+      this.categoriaSelecionada(this.NomeCategoria),
+      this.nomeTitulo()
+    })
+  }
+
+  nomeTitulo(){
+    this.route.params
+    .subscribe(params =>{
+      this.nomeHeader = params['categoria']
+    })
+  }
+
+
+  categoriaSelecionada(cat: any){
+    this.service.getCategoriaDetailsMeals(cat)
+    .subscribe(res => this.NomeCategoria = res.meals)
+  
   }
 
 }
