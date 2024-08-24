@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InfoRecipiesService } from './info-recipies.service';
 import { subscribe } from 'diagnostics_channel';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-component',
   standalone: true,
-  imports: [FormsModule, HttpClientModule], 
+  imports: [FormsModule, HttpClientModule, RouterLink], 
   templateUrl: './home-component.component.html',
   styleUrls: ['./home-component.component.css']
 })

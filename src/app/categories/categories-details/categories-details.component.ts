@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { InfoRecipiesService } from '../../home-component/info-recipies.service';
 
 @Component({
   selector: 'app-categories-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './categories-details.component.html',
   styleUrl: './categories-details.component.css'
 })
 export class CategoriesDetailsComponent implements OnInit{
 
-  NomeCategoria!: any;
+  NomeCategorias!: any;
   nomeHeader!: any;
  
 
@@ -23,8 +23,8 @@ export class CategoriesDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.route.params
     .subscribe(params =>{
-      this.NomeCategoria = params['categoria']
-      this.categoriaSelecionada(this.NomeCategoria),
+      this.NomeCategorias = params['categoria']
+      this.categoriaSelecionada(this.NomeCategorias),
       this.nomeTitulo()
     })
   }
@@ -39,7 +39,7 @@ export class CategoriesDetailsComponent implements OnInit{
 
   categoriaSelecionada(cat: any){
     this.service.getCategoriaDetailsMeals(cat)
-    .subscribe(res => this.NomeCategoria = res.meals)
+    .subscribe(res => this.NomeCategorias = res.meals)
   
   }
 

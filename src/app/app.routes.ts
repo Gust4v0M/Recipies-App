@@ -14,5 +14,8 @@ export const routes: Routes = [
     {
         path:'categories-details/:categoria', loadComponent:()=> import('./categories/categories-details/categories-details.component').then(c => c.CategoriesDetailsComponent)
     },
+    {
+        path:'recipies-details/:NomeCategoria', loadComponent:()=> import('./recipes-details/recipes-details.component').then(c => c.RecipesDetailsComponent)
+    }
     
 ];

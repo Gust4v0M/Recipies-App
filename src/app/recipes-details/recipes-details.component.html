@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="container">
+    <header>
+      <img class="Imagem-Receita" [src]="infoRecipies.strMealThumb" alt="" />
+    </header>
+
+    <div class="recipies-informations">
+  
+        <h2>{{ infoRecipies.strMeal }}</h2>
+        <p class="instructions">{{ infoRecipies.strInstructions }}</p>
+        <div class="ingredients">
+          <h2>Ingredientes</h2>
+          <ul>
+            <li *ngFor="let ing of infoRecipies.ingredients">
+              <img
+                class="ingre-pic"
+                [src]="
+                  'https://www.themealdb.com/images/ingredients/' + ing.ingredient + '.png' "alt=""/>
+              <h6>{{ ing.ingredient }}</h6>
+              <p>{{ ing.measure }}</p>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
