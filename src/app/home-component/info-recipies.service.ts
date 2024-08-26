@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
 export class InfoRecipiesService {
 
 
-   private readonly API_URL = 'https://themealdb.com/api/json/v1/1/search.php?s='
+   private readonly API_URL = 'https://themealdb.com/api/json/v1/1/search.php?s=';
 
-   private readonly API_CAT_URL = 'https://themealdb.com/api/json/v1/1/categories.php'
+   private readonly API_CAT_URL = 'https://themealdb.com/api/json/v1/1/categories.php';
    
-   private readonly API_CAT_DETAILS_URL = 'https://themealdb.com/api/json/v1/1/filter.php?c='
+   private readonly API_CAT_DETAILS_URL = 'https://themealdb.com/api/json/v1/1/filter.php?c=';
+
+   private readonly API_INGREDIENTS_URL = 'https://themealdb.com/api/json/v1/1/filter.php?i='
 
    constructor(private http: HttpClient) { }
 
@@ -32,4 +34,9 @@ export class InfoRecipiesService {
     return this.http.get(apiRes)
   }
 
+  getIngredients(ing: any){
+    const apiRes = `${this.API_INGREDIENTS_URL}${ing}`
+
+     return this.http.get(this.API_INGREDIENTS_URL)
+  }
 }

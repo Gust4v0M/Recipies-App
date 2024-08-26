@@ -6,7 +6,7 @@
 .container {
     display: flex;
     align-items: center;
-    height: 90vh;
+    min-height: 91vh;
     width: 100%;
 
     flex-direction: column;
@@ -35,7 +35,22 @@ input {
     height: 5vh;
 
 }
+tr{
+    height: 85px;
 
+}
+
+.custom-bg, .custom-bg tr, .custom-bg td {
+    background-color: #F6F6F6 !important;
+}
+
+.pic-table{
+    height: 76px;
+    width: 71px;
+    border-radius: 15px;
+    border-style: solid;
+    object-fit: cover;
+}
 ul {
     display: flex;
     align-items: center;
@@ -69,7 +84,7 @@ li {
    border-radius: 10px;
 }
 
-img{
+.img-padrao{
     height: 100%;
     width: 100%;
     object-fit: cover;

@@ -9,26 +9,44 @@
       </div>
     </header>
 
-    <input type="text" placeholder="Digite seus ingredientes" />
+    <input type="text" placeholder="Digite seus ingredientes" [formControl]="input" />
+
+    <table
+    class="table  custom-bg">
+    <thead>
+      <tr>
+        <th scope="col">Receitas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results$ | async">
+        <td [style.color]="'black'">
+          <img class="pic-table" [src]="result.strMealThumb" alt="">
+          {{ result.strMeal }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
     <div class="">
       <ul class="row">
         <li class="col" [routerLink]="['/recipies-details', recipiesInfo['Lancashire'].strMeal]">
-          <img [src]="recipiesInfo['Lancashire'].strMealThumb" alt="" />
+          <img class="img-padrao" [src]="recipiesInfo['Lancashire'].strMealThumb" alt="" />
           <i class="bi bi-heart"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Lancashire'].strMeal }}</p>
         </li>
       <li class="col" [routerLink]="['/recipies-details', recipiesInfo['Dumpling'].strMeal]">
-          <img [src]="recipiesInfo['Dumpling'].strMealThumb" alt="" />
+          <img class="img-padrao" [src]="recipiesInfo['Dumpling'].strMealThumb" alt="" />
           <i class="bi bi-heart"></i>
           <p class="nome-alimento"> {{  recipiesInfo['Dumpling'].strMeal }}</p>
           </li>
         <li class="col" [routerLink]="['/recipies-details', recipiesInfo['Pancakes'].strMeal]">
-          <img [src]="recipiesInfo['Pancakes'].strMealThumb" alt="" />
+          <img class="img-padrao" [src]="recipiesInfo['Pancakes'].strMealThumb" alt="" />
           <i class="bi bi-heart"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Pancakes'].strMeal }}</p>
         </li>
         <li class="col" [routerLink]="['/recipies-details', recipiesInfo['Brownies'].strMeal]">
-          <img [src]="recipiesInfo['Brownies'].strMealThumb" alt="" />
+          <img class="img-padrao" [src]="recipiesInfo['Brownies'].strMealThumb" alt="" />
           <i class="bi bi-heart"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Brownies'].strMeal }}</p>
         </li> 
