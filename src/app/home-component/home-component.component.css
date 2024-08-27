@@ -25,7 +25,6 @@
 
 input {
     margin-top: 20px;
-    margin-bottom: 5%;
     border-radius: 15px;
     border-style: solid;
     border-color: #08b6c1;
@@ -42,7 +41,7 @@ tr{
 
 .custom-bg, .custom-bg tr, .custom-bg td {
     background-color: #F6F6F6 !important;
-}
+ }
 
 .pic-table{
     height: 76px;
@@ -73,6 +72,23 @@ li {
     position: relative;
 }
 
+table{
+    width: 310px;
+    position: relative;
+    margin-bottom: 10px;
+}
+td{
+    display: flex;
+}
+th{
+    text-align: center;
+  }
+
+.Meal-name{
+    font-size: small;
+    font-weight: bold;
+    margin: 13px;
+}
 
 .bi-heart{
    position: absolute;

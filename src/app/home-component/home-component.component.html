@@ -12,17 +12,17 @@
     <input type="text" placeholder="Digite seus ingredientes" [formControl]="input" />
 
     <table
-    class="table  custom-bg">
+    class="table custom-bg">
     <thead>
       <tr>
-        <th scope="col">Receitas</th>
+        <th scope="col"><h2> Receitas </h2></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let result of results$ | async">
+      <tr *ngFor="let result of results$ | async" [routerLink]="['/recipies-details', result.strMeal]">
         <td [style.color]="'black'">
           <img class="pic-table" [src]="result.strMealThumb" alt="">
-          {{ result.strMeal }}
+          <p class="Meal-name"> {{ result.strMeal }}</p>
         </td>
       </tr>
     </tbody>
