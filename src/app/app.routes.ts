@@ -16,6 +16,9 @@ export const routes: Routes = [
     },
     {
         path:'recipies-details/:NomeCategoria', loadComponent:()=> import('./recipes-details/recipes-details.component').then(c => c.RecipesDetailsComponent)
+    },
+    {
+        path: 'add-recipie', loadComponent:() => import('./add-recipie/add-recipie.component').then(c => c.AddRecipieComponent)
     }
     
 ];
