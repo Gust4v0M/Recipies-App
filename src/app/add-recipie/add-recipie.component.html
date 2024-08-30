@@ -1,25 +1,22 @@
 <div class="main">
     <div class="container">
+        <form [formGroup]="formulario">
         <header><h2> New Recipie </h2> </header>
    
 
     <h3>Name</h3>
-    <input type="text" class="name">
+    <input type="text" class="name" formControlName="name">
 
     <h3>Category</h3>
-    <input type="text" class="category">
+    <input type="text" class="category" formControlName="categories">
 
     <h3>Ingredients</h3>
-    <input type="text" class="ingredients">
+    <input type="text" class="ingredients" formControlName="ingredients">
 
     <h3>Description</h3>
-    <input type="text" class="description">
-
-    
-    <h3>Imagem</h3>
-    <input type="image">
+    <input type="text" class="description" formControlName="description">
 
     <button class="btn" type="submit">Submit form</button>
-
+            </form>
 </div>
 </div>
