@@ -3,14 +3,13 @@
         <header *ngIf="NomeCategorias"><h2>  {{ nomeHeader }} </h2></header>
 <div>
         <ul>
-            <li *ngFor="let NomeCategoria of NomeCategorias" [routerLink]="['/recipies-details', NomeCategoria.strMeal]">
+            <li *ngFor="let NomeCategoria of NomeCategorias">
                 <img [src]="NomeCategoria.strMealThumb" alt="">
               <p class="nomeRefeição">{{ NomeCategoria.strMeal }}</p>
                 <i class="bi bi-heart"></i>
               <div class="food-info"><i class="bi bi-fire"></i> {{'350 Kcal'}} <i class="bi bi-clock"></i> {{'20 min'}}</div>
             </li>
         </ul>
-        
-    </div>
+      </div>
     </div>
 </div>

@@ -17,15 +17,16 @@ import {
 export class AddRecipieComponent implements OnInit {
   formulario!: FormGroup;
   receitas: any;
+  id: String[] = [];
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      name: ['vodin'],
-      categories: ['cdk'],
-      ingredients: ['null'],
-      description: ['sdsdsd'],
+      name: [''],
+      categories: [''],
+      ingredients: [''],
+      description: [''],
     });
 
     this.receitas = [
@@ -37,16 +38,37 @@ export class AddRecipieComponent implements OnInit {
         description: '',
       },
     ];
-    this.pushRecipies();
   }
 
-  pushRecipies() {
-   
-    this.receitas[0].name = this.formulario.value.name;
-    this.receitas[0].category = this.formulario.value.categories;
-    this.receitas[0].ingredients = this.formulario.value.ingredients;
-    this.receitas[0].description = this.formulario.value.description;
-  
-    console.log(this.receitas);
+  pushRecipies() {}
+
+  InputValues() {
+    let idRecipie = this.receitas[0].id;
+    this.id.push(idRecipie + 1);
+
+    if (this.receitas[0].name !== null) {
+      for (let i = 0; i < this.receitas.length; i++) {
+        if (i <= 0) {
+
+          
+          this.receitas[i].name = this.formulario.value.name;
+          this.receitas[i].category = this.formulario.value.categories;
+          this.receitas[i].ingredients = this.formulario.value.ingredients;
+          this.receitas[i].description = this.formulario.value.description;
+          this.receitas.push(this.receitas[i])
+          console.log(this.receitas);
+
+        }
+      }
+    }
+
+    // if (this.receitas[0].name !== null) {
+    //   const recipieDetails = Object.create(this.receitas);
+    //   recipieDetails.name = this.formulario.value.name;
+    //   recipieDetails.category = this.formulario.value.categories;
+    //   recipieDetails.ingredients = this.formulario.value.ingredients;
+    //   recipieDetails.description = this.formulario.value.description;
+    //   console.log(recipieDetails);
+    // }
   }
 }
