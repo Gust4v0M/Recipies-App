@@ -10,7 +10,7 @@
     <h3>Category</h3>
     <input type="search" class="category" formControlName="categories" [formControl]="categories">
      <ul>
-        <li *ngFor="let categoria of teste">
+        <li *ngFor="let categoria of categoriesResults$ | async">
             <p>{{ categoria.strCategory }}</p>
         </li>
     </ul> 

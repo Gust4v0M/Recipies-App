@@ -60,17 +60,18 @@ teste!: any;
       localStorage.getItem('receitas');
     }
     this.categoriesResults$ = this.categories.valueChanges.pipe(
-      filter((value: any) => {
-        return value.length > 1;
-      }),
+      filter((value: any) => value.length > 1),
       tap(value => console.log("teste" + value)),
       debounceTime(200),
       distinctUntilChanged(),
       switchMap((value: any) =>
         this.service.getCategoriesMeals().pipe(
           map((response: any) => {
-            return response.categories.filter((categories: any) =>
-              categories.toLowerCase().includes(value.toLowerCase()))
+            const filteredCategories = response.categories.filter((category: any) =>
+              category.strCategory.toLowerCase().includes(value.toLowerCase())
+            );
+            // Garantindo que o resultado seja um array
+            return Array.isArray(filteredCategories) ? filteredCategories : [];
           })
         )
       )
