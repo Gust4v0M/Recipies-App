@@ -8,7 +8,12 @@
     <input type="text" class="name" formControlName="name">
 
     <h3>Category</h3>
-    <input type="text" class="category" formControlName="categories">
+    <input type="search" class="category" formControlName="categories" [formControl]="categories">
+     <ul>
+        <li *ngFor="let categoria of teste">
+            <p>{{ categoria.strCategory }}</p>
+        </li>
+    </ul> 
 
     <h3>Ingredients</h3>
     <input type="text" class="ingredients" formControlName="ingredients">

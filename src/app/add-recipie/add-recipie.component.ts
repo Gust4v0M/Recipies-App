@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -6,6 +7,16 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
+import { InfoRecipiesService } from '../home-component/info-recipies.service';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { subscribe } from 'node:diagnostics_channel';
 
 @Component({
   selector: 'app-add-recipie',
@@ -18,8 +29,13 @@ export class AddRecipieComponent implements OnInit {
   formulario!: FormGroup;
   receitas: any;
   id: String[] = [];
-
-  constructor(private formBuilder: FormBuilder) {}
+  categoriesResults$: any;
+  categories = new FormControl();
+teste!: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: InfoRecipiesService
+  ) {}
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -38,37 +54,49 @@ export class AddRecipieComponent implements OnInit {
         description: '',
       },
     ];
+    this.service.getCategoriesMeals()
+    .subscribe((res: any) => this.teste = res.categories)
+    if (this.isBrowser()) {
+      localStorage.getItem('receitas');
+    }
+    this.categoriesResults$ = this.categories.valueChanges.pipe(
+      filter((value: any) => {
+        return value.length > 1;
+      }),
+      tap(value => console.log("teste" + value)),
+      debounceTime(200),
+      distinctUntilChanged(),
+      switchMap((value: any) =>
+        this.service.getCategoriesMeals().pipe(
+          map((response: any) => {
+            return response.categories.filter((categories: any) =>
+              categories.toLowerCase().includes(value.toLowerCase()))
+          })
+        )
+      )
+    );
   }
 
-  pushRecipies() {}
+  isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
 
   InputValues() {
-    let idRecipie = this.receitas[0].id;
-    this.id.push(idRecipie + 1);
-
     if (this.receitas[0].name !== null) {
-      for (let i = 0; i < this.receitas.length; i++) {
-        if (i <= 0) {
+      const name = this.formulario.value.name;
+      const category = this.formulario.value.categories;
+      const ingredients = this.formulario.value.ingredients;
+      const description = this.formulario.value.description;
 
-          
-          this.receitas[i].name = this.formulario.value.name;
-          this.receitas[i].category = this.formulario.value.categories;
-          this.receitas[i].ingredients = this.formulario.value.ingredients;
-          this.receitas[i].description = this.formulario.value.description;
-          this.receitas.push(this.receitas[i])
-          console.log(this.receitas);
-
-        }
-      }
+      const newRecipie = (this.receitas[0] = {
+        name: name,
+        category: category,
+        ingredients: ingredients,
+        description: description,
+      });
+      this.receitas.push(newRecipie);
+      console.log(this.receitas);
+      localStorage.setItem('receitas', this.receitas);
     }
-
-    // if (this.receitas[0].name !== null) {
-    //   const recipieDetails = Object.create(this.receitas);
-    //   recipieDetails.name = this.formulario.value.name;
-    //   recipieDetails.category = this.formulario.value.categories;
-    //   recipieDetails.ingredients = this.formulario.value.ingredients;
-    //   recipieDetails.description = this.formulario.value.description;
-    //   console.log(recipieDetails);
-    // }
   }
 }
