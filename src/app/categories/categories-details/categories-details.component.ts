@@ -14,11 +14,18 @@ export class CategoriesDetailsComponent implements OnInit{
 
   NomeCategorias!: any;
   nomeHeader!: any;
+  @Input() Receita: any 
  
 
   constructor(private route: ActivatedRoute,
               private service: InfoRecipiesService
   ){}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['Receita']) {
+      console.log('Receita atualizada:', this.Receita);
+    }
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -27,6 +34,7 @@ export class CategoriesDetailsComponent implements OnInit{
       this.categoriaSelecionada(this.NomeCategorias),
       this.nomeTitulo()
     })
+    console.log(this.Receita)
   }
 
   nomeTitulo(){

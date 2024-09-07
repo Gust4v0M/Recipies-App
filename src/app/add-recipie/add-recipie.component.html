@@ -9,9 +9,9 @@
 
     <h3>Category</h3>
     <input type="search" class="category" formControlName="categories" [formControl]="categories">
-     <ul>
-        <li *ngFor="let categoria of categoriesResults$ | async">
-            <p>{{ categoria.strCategory }}</p>
+     <ul *ngIf="mostrarLista">
+        <li  *ngFor="let categoria of categoriesResults$ | async">
+            <p (click)="categoriaEscolhida(categoria.strCategory)">{{ categoria.strCategory }}</p>
         </li>
     </ul> 
 
@@ -25,3 +25,5 @@
             </form>
 </div>
 </div>
+
+ <app-categories-details [Receita]="receitas" *ngIf="apagaComponent"><app-categories-details>

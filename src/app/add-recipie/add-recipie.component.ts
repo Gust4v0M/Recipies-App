@@ -13,15 +13,17 @@ import {
   distinctUntilChanged,
   filter,
   map,
+  of,
   switchMap,
   tap,
 } from 'rxjs';
 import { subscribe } from 'node:diagnostics_channel';
+import { CategoriesDetailsComponent } from '../categories/categories-details/categories-details.component';
 
 @Component({
   selector: 'app-add-recipie',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, CategoriesDetailsComponent],
   templateUrl: './add-recipie.component.html',
   styleUrl: './add-recipie.component.css',
 })
@@ -29,9 +31,11 @@ export class AddRecipieComponent implements OnInit {
   formulario!: FormGroup;
   receitas: any;
   id: String[] = [];
-  categoriesResults$: any;
+  categoriesResults$: any = of([]);
   categories = new FormControl();
-teste!: any;
+  mostrarLista: boolean = true;
+  apagaComponent: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private service: InfoRecipiesService
@@ -54,21 +58,24 @@ teste!: any;
         description: '',
       },
     ];
-    this.service.getCategoriesMeals()
-    .subscribe((res: any) => this.teste = res.categories)
+
     if (this.isBrowser()) {
-      localStorage.getItem('receitas');
+      const storedReceitas = localStorage.getItem('receitas');
+      if (storedReceitas) {
+        this.receitas = JSON.parse(storedReceitas);
+      }
     }
     this.categoriesResults$ = this.categories.valueChanges.pipe(
-      filter((value: any) => value.length > 1),
-      tap(value => console.log("teste" + value)),
+      filter((value: any) => value.length > 0),
+      tap((value) => console.log('teste' + value)),
       debounceTime(200),
       distinctUntilChanged(),
       switchMap((value: any) =>
         this.service.getCategoriesMeals().pipe(
           map((response: any) => {
-            const filteredCategories = response.categories.filter((category: any) =>
-              category.strCategory.toLowerCase().includes(value.toLowerCase())
+            const filteredCategories = response.categories.filter(
+              (category: any) =>
+                category.strCategory.toLowerCase().includes(value.toLowerCase())
             );
             // Garantindo que o resultado seja um array
             return Array.isArray(filteredCategories) ? filteredCategories : [];
@@ -76,6 +83,8 @@ teste!: any;
         )
       )
     );
+
+    console.log(this.receitas);
   }
 
   isBrowser(): boolean {
@@ -96,8 +105,16 @@ teste!: any;
         description: description,
       });
       this.receitas.push(newRecipie);
-      console.log(this.receitas);
-      localStorage.setItem('receitas', this.receitas);
+
+      localStorage.setItem('receitas', JSON.stringify(this.receitas));
+    }
+  }
+
+  categoriaEscolhida(categoria: string) {
+    let inputCat = this.formulario.get('categories')?.setValue(categoria);
+
+    if (inputCat !== null) {
+      this.mostrarLista = false;
     }
   }
 }
