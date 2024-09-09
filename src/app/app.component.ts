@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'recipes-app';
+
 }
