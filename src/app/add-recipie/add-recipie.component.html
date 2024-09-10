@@ -1,29 +1,54 @@
 <div class="main">
-    <div class="container">
-        <form [formGroup]="formulario">
-        <header><h2> New Recipie </h2> </header>
-   
+  <header>
+    <h2>New Recipie</h2>
+    <i id="icon" [class]="icon" (click)="changeComponent()"> </i>
+  </header>
+  <div class="container" *ngIf="container1">
+    <form [formGroup]="formulario">
+      <h3>Name</h3>
+      <input type="text" class="name" formControlName="name" />
 
-    <h3>Name</h3>
-    <input type="text" class="name" formControlName="name">
-
-    <h3>Category</h3>
-    <input type="search" class="category" formControlName="categories" [formControl]="categories">
-     <ul *ngIf="mostrarLista">
-        <li  *ngFor="let categoria of categoriesResults$ | async">
-            <p (click)="categoriaEscolhida(categoria.strCategory)">{{ categoria.strCategory }}</p>
+      <h3>Category</h3>
+      <input
+        type="search"
+        class="category"
+        formControlName="categories"
+        [formControl]="categories"
+      />
+      <ul *ngIf="mostrarLista">
+        <li
+          class="dropBox"
+          *ngFor="let categoria of categoriesResults$ | async"
+        >
+          <p (click)="categoriaEscolhida(categoria.strCategory)">
+            {{ categoria.strCategory }}
+          </p>
         </li>
-    </ul> 
+      </ul>
 
-    <h3>Ingredients</h3>
-    <input type="text" class="ingredients" formControlName="ingredients">
+      <h3>Ingredients</h3>
+      <input type="text" class="ingredients" formControlName="ingredients" />
 
-    <h3>Description</h3>
-    <input type="text" class="description" formControlName="description">
+      <h3>Description</h3>
+      <input type="text" class="description" formControlName="description" />
 
-    <button class="btn" type="submit" (click)="InputValues()">Submit form</button>
-            </form>
+      <button class="btn" type="submit" (click)="InputValues()">
+        Submit form
+      </button>
+    </form>
+  </div>
+
+  <div class="container2" *ngIf="container2">
+    <ul class="mainRecipies">
+      <li class="list" *ngFor="let newRecipie of receitas">
+        <img [src]="" alt="" />
+        <p class="nomeRefeição">{{ newRecipie.name }}</p>
+        <i class="bi bi-heart"></i>
+        <div class="food-info">
+          <i class="bi bi-fire"></i> {{ "350 Kcal" }}
+          <i class="bi bi-clock"></i> {{ "20 min" }}
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
-</div>
-
- <app-categories-details [Receita]="receitas" *ngIf="apagaComponent"><app-categories-details>

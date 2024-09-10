@@ -6,6 +6,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
   FormControl,
+  FormsModule
 } from '@angular/forms';
 import { InfoRecipiesService } from '../home-component/info-recipies.service';
 import {
@@ -17,12 +18,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { subscribe } from 'node:diagnostics_channel';
 import { CategoriesDetailsComponent } from '../categories/categories-details/categories-details.component';
-import { Database } from 'firebase/database';
-import firebase from 'firebase/compat/app';
-//import firebase from 'firebase/app';
-import 'firebase/compat/firestore';
 
 @Component({
   selector: 'app-add-recipie',
@@ -38,7 +34,11 @@ export class AddRecipieComponent implements OnInit {
   categoriesResults$: any = of([]);
   categories = new FormControl();
   mostrarLista: boolean = true;
-  apagaComponent: boolean = false;
+  container1: boolean = true;
+  container2: boolean = true;
+
+  icon:string = 'bi-book'
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,19 +47,7 @@ export class AddRecipieComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-    var firebaseConfig = {
-      apiKey: "AIzaSyBDGWDD3wHLKpUuCcPCeEu-6uHb_6NEzTU",
-      authDomain: "recipies-app-509fa.firebaseapp.com",
-      databaseURL: "https://recipies-app-509fa-default-rtdb.firebaseio.com",
-      projectId: "recipies-app-509fa",
-      storageBucket: "recipies-app-509fa.appspot.com",
-      messagingSenderId: "867181965922",
-      appId: "1:867181965922:web:1ddab4b6860be3ae32173b",
-      measurementId: "G-H7QM41MFQ2"
-    };
-    firebase.initializeApp(firebaseConfig);
-    
+    this.container2 = false;  
     this.formulario = this.formBuilder.group({
       name: [''],
       categories: [''],
@@ -102,7 +90,7 @@ export class AddRecipieComponent implements OnInit {
       )
     );
 
-    console.log(this.receitas);
+console.log(this.receitas)
   }
 
   isBrowser(): boolean {
@@ -123,13 +111,6 @@ export class AddRecipieComponent implements OnInit {
         description: description,
       });
       this.receitas.push(newRecipie);
-
-      await firebase.firestore().collection('receitas').add({
-        name: name,
-        category: category,
-        ingredients: ingredients,
-        description: description,
-      });
     }
   }
 
@@ -140,4 +121,18 @@ export class AddRecipieComponent implements OnInit {
       this.mostrarLista = false;
     }
   }
+  changeComponent(){
+
+    if (this.icon === "bi-book") {
+      this.icon = "bi-file-plus-fill";
+      this.container1 = false
+      this.container2 = true
+    } else {
+      this.icon = "bi-book";
+      this.container1 = true
+      this.container2 = false
+    }
+  }
+
+
 }
