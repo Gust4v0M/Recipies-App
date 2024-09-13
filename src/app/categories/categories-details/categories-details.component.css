@@ -47,6 +47,17 @@ li{
     top: 4%;
     right: 5%;
     padding: 2%;
+    background-color: rgb(255, 255, 255);
+    border-style: none;
+    border-radius: 10px;
+ }
+ 
+
+.bi-heart{
+    position: absolute;
+    top: 4%;
+    right: 5%;
+    padding: 2%;
 }
 
 .nomeRefeição{

@@ -3,8 +3,8 @@
         <header><h2> Receitas favoritadas</h2></header>
 <div>
         <ul>
-            <li *ngFor="let nomeReceita of DetalheReceita"  [routerLink]="['/recipies-details', nomeReceita.strMeal]">
-                <img [src]="nomeReceita.strMealThumb" alt="">
+            <li *ngFor="let nomeReceita of DetalheReceita">
+                <img [src]="nomeReceita.strMealThumb" alt=""  [routerLink]="['/recipies-details', nomeReceita.strMeal]">
               <p class="nomeRefeição">{{ nomeReceita.strMeal }}</p>
                 <i class="bi bi-heart"></i>
               <div class="food-info"><i class="bi bi-fire"></i> {{'350 Kcal'}} <i class="bi bi-clock"></i> {{'20 min'}}</div>

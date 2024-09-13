@@ -52,4 +52,12 @@ export class CategoriesDetailsComponent implements OnInit{
   
   }
 
+  saveFavComponent(nomeReceita: any){
+
+    let favRecipies = this.service.getFromLocalStorage('favRecipies') || []
+    favRecipies.push(nomeReceita)
+    this.service.saveToLocalStorage('favRecipies', favRecipies)
+  }
+
+
 }
