@@ -12,34 +12,36 @@ import { InfoRecipiesService } from '../home-component/info-recipies.service';
 })
 export class FavComponentComponent {
   NomeCategorias!: any;
-  nomeHeader!: any;
- 
+  nomeReceitas!: any;
+  DetalheReceita:any = []
 
-  constructor(private route: ActivatedRoute,
-              private service: InfoRecipiesService
-  ){}
+  constructor(private service: InfoRecipiesService){}
 
   ngOnInit(): void {
-    this.route.params
-    .subscribe(params =>{
-      this.NomeCategorias = params['categoria']
-      this.categoriaSelecionada(this.NomeCategorias),
-      this.nomeTitulo()
-    })
+   this.nomeReceitas = this.service.getFromLocalStorage('favRecipies') || [];
+
+    //  console.log(this.nomeReceitas);
+
+    //  for(let i =0; i < this.nomeReceitas.length; i++){
+    //       this.receitaSelecionada(this.nomeReceitas[i])
+
+    //  }
+      this.nomeReceitas.forEach((res: any) => this.receitaSelecionada(res))      
+
+
+    
   }
 
-  nomeTitulo(){
-    this.route.params
-    .subscribe(params =>{
-      this.nomeHeader = params['categoria']
+
+
+
+  receitaSelecionada(receita: any){
+
+    this.service.getInfoRecipies(receita).subscribe((dados : any) =>{
+    this.DetalheReceita.push(dados.meals[0])
+    console.log(this.DetalheReceita)
     })
-  }
-
-
-  categoriaSelecionada(cat: any){
-    this.service.getCategoriaDetailsMeals(cat)
-    .subscribe(res => this.NomeCategorias = res.meals)
-  
+   
   }
 
 

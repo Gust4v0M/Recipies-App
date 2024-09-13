@@ -33,25 +33,25 @@
         <li class="col">
           <img class="img-padrao" [src]="recipiesInfo['Lancashire'].strMealThumb" alt="" 
             [routerLink]="['/recipies-details', recipiesInfo['Lancashire'].strMeal]"/>
-          <i class="bi bi-heart"></i>
+          <i class="bi bi-heart" (click)="saveFavComponent(recipiesInfo['Lancashire'].strMeal)"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Lancashire'].strMeal }}</p>
         </li>
       <li class="col" >
           <img class="img-padrao" [src]="recipiesInfo['Dumpling'].strMealThumb" alt="" 
           [routerLink]="['/recipies-details', recipiesInfo['Dumpling'].strMeal]" />
-          <i class="bi bi-heart" [routerLink]="['/favi-component', recipiesInfo['Dumpling'].strMeal]"></i>
+          <i class="bi bi-heart" (click)="saveFavComponent(recipiesInfo['Dumpling'].strMeal)"></i>
           <p class="nome-alimento"> {{  recipiesInfo['Dumpling'].strMeal }}</p>
           </li>
         <li class="col" >
           <img class="img-padrao" [src]="recipiesInfo['Pancakes'].strMealThumb" alt="" 
           [routerLink]="['/recipies-details', recipiesInfo['Pancakes'].strMeal]"/>
-          <i class="bi bi-heart"></i>
+          <i class="bi bi-heart" (click)="saveFavComponent(recipiesInfo['Pancakes'].strMeal)"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Pancakes'].strMeal }}</p>
         </li>
         <li class="col">
           <img class="img-padrao" [src]="recipiesInfo['Brownies'].strMealThumb" alt=""  
           [routerLink]="['/recipies-details', recipiesInfo['Brownies'].strMeal]"/>
-          <i class="bi bi-heart"></i>
+          <i class="bi bi-heart"  (click)="saveFavComponent(recipiesInfo['Brownies'].strMeal)"></i>
           <p class="nome-alimento"> {{ recipiesInfo['Brownies'].strMeal }}</p>
         </li> 
       </ul>

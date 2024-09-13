@@ -1,11 +1,11 @@
 <div class="main">
     <div class="container">
-        <header *ngIf="NomeCategorias"><h2>  {{ nomeHeader }} </h2></header>
+        <header><h2> Receitas favoritadas</h2></header>
 <div>
         <ul>
-            <li *ngFor="let NomeCategoria of NomeCategorias">
-                <img [src]="NomeCategoria.strMealThumb" alt="">
-              <p class="nomeRefeição">{{ NomeCategoria.strMeal }}</p>
+            <li *ngFor="let nomeReceita of DetalheReceita"  [routerLink]="['/recipies-details', nomeReceita.strMeal]">
+                <img [src]="nomeReceita.strMealThumb" alt="">
+              <p class="nomeRefeição">{{ nomeReceita.strMeal }}</p>
                 <i class="bi bi-heart"></i>
               <div class="food-info"><i class="bi bi-fire"></i> {{'350 Kcal'}} <i class="bi bi-clock"></i> {{'20 min'}}</div>
             </li>

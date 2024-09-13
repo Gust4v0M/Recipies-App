@@ -21,6 +21,6 @@ export const routes: Routes = [
         path: 'add-recipie', loadComponent:() => import('./add-recipie/add-recipie.component').then(c => c.AddRecipieComponent)
     },
     {
-        path:'favi-component/:NomeCategoria', loadComponent:() => import('./fav-component/fav-component.component').then(c => c.FavComponentComponent)
+        path:'favi-component', loadComponent:() => import('./fav-component/fav-component.component').then(c => c.FavComponentComponent)
     }
 ];

@@ -47,7 +47,8 @@ export class CategoriesDetailsComponent implements OnInit{
 
   categoriaSelecionada(cat: any){
     this.service.getCategoriaDetailsMeals(cat)
-    .subscribe(res => this.NomeCategorias = res.meals)
+    .subscribe((res: any) => {this.NomeCategorias = res.meals
+                               console.log(this.NomeCategorias)})
   
   }
 

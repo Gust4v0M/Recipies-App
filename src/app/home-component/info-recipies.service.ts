@@ -39,4 +39,17 @@ export class InfoRecipiesService {
 
      return this.http.get(this.API_INGREDIENTS_URL)
   }
+
+  saveToLocalStorage(key: string, value: any): void{
+    if(typeof window !==  'undefined'){
+      localStorage.setItem(key, JSON.stringify(value))
+    }
+  }
+
+  getFromLocalStorage(key: string): any{
+    if(typeof window !== 'undefined'){
+      const storedData = localStorage.getItem(key);
+      return storedData ? JSON.parse(storedData): null;
+    }
+  }
 }

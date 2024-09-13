@@ -27,6 +27,7 @@ export class HomeComponentComponent implements OnInit {
   input = new FormControl();
   results$!: any;
   recipiesInfo: { [key: string]: any } = {};
+  nomeReceitas: any;
 
 
   constructor(private service: InfoRecipiesService) {}
@@ -54,12 +55,22 @@ export class HomeComponentComponent implements OnInit {
         )
       )
     )
+
+    this.nomeReceitas = [
+      {nome:''}
+    ]
+  }
+  saveFavComponent(nomeReceita: any){
+
+    let favRecipies = this.service.getFromLocalStorage('favRecipies') || []
+    favRecipies.push(nomeReceita)
+    this.service.saveToLocalStorage('favRecipies', favRecipies)
   }
 
   getRecipiesInfo(res: any) {
     this.service.getInfoRecipies(res).subscribe((dados: any) => {
       this.recipiesInfo[res] = dados.meals[0];
-      // console.log(this.recipiesInfo[res])
+       console.log(this.recipiesInfo[res])
     });
   }
 

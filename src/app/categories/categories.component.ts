@@ -23,6 +23,6 @@ export class CategoriesComponent implements OnInit{
   ngOnInit(): void {
     this.catService.getCategoriesMeals()
     .subscribe((res: any) => this.categorias = res.categories)
-    
+    console.log(this.categorias)
   }
 }
