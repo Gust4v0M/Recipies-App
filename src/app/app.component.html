@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
-
-<footer>
+<div class="main">
+<footer *ngIf=" router.url !== '/'">
     <ul>
         <li><i routerLink="/home" class="bi bi-house-door-fill"></i></li>
         <li routerLink="/categories"><i class="bi bi-globe-americas"></i></li>
@@ -8,3 +8,4 @@
         <li><i routerLink="/add-recipie" class="bi bi-plus-lg"></i></li>
     </ul>
 </footer>
+</div>

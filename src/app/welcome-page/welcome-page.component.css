@@ -45,6 +45,17 @@ h2{
     border-width: 10px 10px 4px 10px;
 }
 
-@media (min-width: 124px){
-
+@media (min-width: 768px) {
+    .container {
+        max-width: 375px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;    
+    }   
+    .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: none;
+    }    
 }

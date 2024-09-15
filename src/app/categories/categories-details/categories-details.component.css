@@ -90,3 +90,19 @@ img{
     margin-right: -3px;
 }
 
+
+@media(min-width: 768px){
+    .container {
+        max-width: 375px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin-bottom: 0px;
+    }
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: none;
+    }    
+}

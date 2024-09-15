@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
 import { RouterLink } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-welcome-page',
@@ -10,5 +11,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './welcome-page.component.css'
 })
 export class WelcomePageComponent {
+
 
 }

@@ -133,3 +133,42 @@ img{
 .bi-fire{
     margin-right: -3px;
 }
+@media (min-width: 768px) {
+    .container2 {
+        max-width: 375px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin-bottom: 0px;
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    form {
+        max-width: 375px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin: 20px auto;
+        background-color: white;
+    }
+
+    .mainRecipies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    #icon{
+       margin-left: 110%;
+    }
+}
+
