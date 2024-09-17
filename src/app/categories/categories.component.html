@@ -1,6 +1,6 @@
 <div class="main">
   <div class="container">
-    <header><h1>Categorias</h1></header>
+    <header><h1>Category</h1></header>
 
     <ul *ngFor="let categoria of categorias.slice(0, 12)">
       <li [routerLink]="['/categories-details', categoria.strCategory]">

@@ -112,6 +112,8 @@ console.log(this.receitas)
       });
       this.receitas.push(newRecipie);
     }
+    alert("Receita cadastrada");  
+    console.log('teste')
   }
 
   categoriaEscolhida(categoria: string) {
